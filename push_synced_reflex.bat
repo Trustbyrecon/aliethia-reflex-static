@@ -1,21 +1,19 @@
 @echo off
-cd /d "%USERPROFILE%\Downloads\Alethia_Reflex_Static_Synced"
+cd /d "%~dp0"
 
-REM Initialize repo if needed
-IF NOT EXIST ".git" (
-    git init
-    git remote add origin https://github.com/Trustbyrecon/aliethia-reflex-static.git
-)
+echo Initializing Git repo...
+git init
+git remote add origin https://github.com/Trustbyrecon/aliethia-reflex-static.git
+git checkout -b main
 
-REM Set branch
-git checkout -B main
-
-REM Stage and commit changes
+echo Adding all files...
 git add .
-git commit -m "🎨 Synced Reflex Design System — UI Alignment with reconai.net"
 
-REM Push to GitHub
-git push origin main
+echo Committing files...
+git commit -m "⚡ Synced Reflex Design System UI Alignment with reconai.net"
 
-echo ✅ Push complete. Press any key to close.
+echo Force pushing to GitHub...
+git push --force origin main
+
+echo ✅ Force push complete.
 pause
